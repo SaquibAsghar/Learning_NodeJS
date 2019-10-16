@@ -1,7 +1,8 @@
 const http = require("http");
-
+const fs = require('fs');
 const server = http.createServer((req, res) => {
 	const url = req.url;
+	const method = req.method;
 	if(url === '/form'){
 		res.write("<html>");
 		res.write("<head><title>My first form</title></head>");
@@ -9,7 +10,12 @@ const server = http.createServer((req, res) => {
 		res.write("</html>");
 		return res.end();
 	}
-
+	if(url === '/formMessage' && method === 'POST' ){
+		fs.writeFileSync('formMessage.text','Dummy text for right now');
+		res.statusCode = 302;
+		res.setHeader('Location','/form'); // this is (Location) accepted by the browser by default and we directed to where we want the user to by mentioning the path
+		return res.end();
+	}
 
 	res.setHeader("Content-type", "text/html"); // setting the header
 	res.write("<html>");
