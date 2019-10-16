@@ -1,9 +1,6 @@
 const http = require("http");
 
 const server = http.createServer((req, res) => {
-	console.log(req.url);
-	console.log(req.method);
-	console.log(req.headers);
 	res.setHeader("Content-type", "text/html"); // setting the header
 	res.write("<html>");
 	res.write("<head><title>My first title from response</title></head>");
