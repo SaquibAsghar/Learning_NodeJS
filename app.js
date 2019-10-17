@@ -17,16 +17,18 @@ const server = http.createServer((req, res) => {
 			body.push(chunk);
 			// console.log('body => ', body)
 		})
-		req.on('end',()=>{
-			const parseBody = Buffer.concat(body).toString();
-			// console.log('parseBody=',parseBody);
-			const message = parseBody.split('=')[1];
-			fs.writeFileSync('formMessage.text',message);
+		return req.on('end',()=>{
+				const parseBody = Buffer.concat(body).toString();
+				// console.log('parseBody=',parseBody);
+				const message = parseBody.split('=')[1];
+				fs.writeFile('formMessage.text',message,(err)=>{
+					res.statusCode = 302;
+					res.setHeader('Location','/form'); // this is (Location) accepted by the browser by default and we directed to where we want the user to by mentioning the path
+					return res.end();
+			});
 		});
 		
-		res.statusCode = 302;
-		res.setHeader('Location','/form'); // this is (Location) accepted by the browser by default and we directed to where we want the user to by mentioning the path
-		return res.end();
+		
 	}
 
 	res.setHeader("Content-type", "text/html"); // setting the header
