@@ -36,6 +36,11 @@ const requestHandler=(req,res)=>{
         res.end(); // to tell the node we are done setting the response :)
         // process.exit();
 }
+// another way of exporting the file, in the form of an object
+// module.exports = {
+//     reqHandler : requestHandler,
+//     someText : 'Some hard coded text'
+// }
 
-module.exports = requestHandler;
+// module.exports = requestHandler;
 
