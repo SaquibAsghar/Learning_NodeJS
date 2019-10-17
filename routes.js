@@ -44,3 +44,7 @@ const requestHandler=(req,res)=>{
 
 // module.exports = requestHandler;
 
+// another way of exporting the handler w/o using module which is supported by nodeJs
+exports.reqHandler = requestHandler;
+exports.someText = 'Some hard coded text';
+
