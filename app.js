@@ -11,7 +11,19 @@ const server = http.createServer((req, res) => {
 		return res.end();
 	}
 	if(url === '/formMessage' && method === 'POST' ){
-		fs.writeFileSync('formMessage.text','Dummy text for right now');
+		const body = [];
+		req.on('data',(chunk)=>{
+			// console.log('chunk =>', chunk);
+			body.push(chunk);
+			// console.log('body => ', body)
+		})
+		req.on('end',()=>{
+			const parseBody = Buffer.concat(body).toString();
+			// console.log('parseBody=',parseBody);
+			const message = parseBody.split('=')[1];
+			fs.writeFileSync('formMessage.text',message);
+		});
+		
 		res.statusCode = 302;
 		res.setHeader('Location','/form'); // this is (Location) accepted by the browser by default and we directed to where we want the user to by mentioning the path
 		return res.end();
