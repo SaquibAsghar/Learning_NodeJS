@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
-    "start-server": "node app.js" 
+    "start": "nodemon app.js",
+    "start-server": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/SaquibAsghar/Learning_NodeJS/issues"
   },
-  "homepage": "https://github.com/SaquibAsghar/Learning_NodeJS#readme"
+  "homepage": "https://github.com/SaquibAsghar/Learning_NodeJS#readme",
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
 }
