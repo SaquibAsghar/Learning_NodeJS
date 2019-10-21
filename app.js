@@ -1,6 +1,6 @@
 const http = require("http");
-const routes = require('./routes'); // custom file
-console.log(routes.someText);
-const server = http.createServer(routes.reqHandler);
+const express  = require('express');
+const app = express();
+const server = http.createServer(app);
 
 server.listen(3005);
