@@ -20,5 +20,8 @@
   "homepage": "https://github.com/SaquibAsghar/Learning_NodeJS#readme",
   "devDependencies": {
     "nodemon": "^1.19.4"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }
