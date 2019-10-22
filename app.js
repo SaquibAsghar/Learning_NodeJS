@@ -1,7 +1,7 @@
 const express  = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({extended:true}));
 
 app.use('/add-product',(req, res, next)=>{
     // console.log("In add-product page");
@@ -9,7 +9,7 @@ app.use('/add-product',(req, res, next)=>{
     // next(); // allows the request to continue to the next middleware in line 
 });
 
-app.use('/product',(req, res, next)=>{
+app.post('/product',(req, res, next)=>{
     console.log(req.body);
     res.redirect('/');
 })
