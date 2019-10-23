@@ -10,6 +10,7 @@ const pageNotFoundRoute = require('./routes/pageNotFound(404)');
 
 
 app.use(bodyParser.urlencoded({extended:true})); // should come at the starting of the app.use()
+app.use(express.static(path.join(__dirname,'','public')));
 
 app.use('/admin',adminRoute);
 app.use(shopRoute);
